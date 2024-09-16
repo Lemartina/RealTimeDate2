@@ -1,7 +1,18 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Live Data</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+@foreach (var emp in EmployeesList)
+{
+    <p>@emp.Name | @emp.Title</p>
+}
+@using RealTImeDate2.Data;
+@using RealTImeDate2.Services;
+@inject EmployeeServices employeeService;
+@code {
+    List<Employee> EmployeesList = new List<Employee>();
+    protected override async Task OnInitializedAsync()
+    {
+        EmployeesList = await employeeService.GetAllEmployees();
+    }
+    }

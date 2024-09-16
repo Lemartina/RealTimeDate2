@@ -1,10 +1,12 @@
 using RealTImeDate2.Components;
+using RealTImeDate2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddSingleton<EmployeeServices>();
 
 var app = builder.Build();
 
