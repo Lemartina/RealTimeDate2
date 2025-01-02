@@ -18,12 +18,12 @@ namespace RealTImeDate2.Services
         public EmployeeServices(IHubContext<EmployeeHub> context)
 
         {
-            _context=context;
+            _context = context;
 
             _connectionString = "Server=LAPTOP-17F35AKM\\SQLEXPRESS;Database=CompanyDatabase2;Trusted_Connection=SSPI;MultipleActiveResultSets=true;TrustServerCertificate=true";
             _dependency = new SqlTableDependency<Employee>(_connectionString, "Employee");
             _dependency.OnChanged += Changed;
-           _dependency.Start();
+            _dependency.Start();
         }
 
         private async void Changed(object sender, RecordChangedEventArgs<Employee> e)
